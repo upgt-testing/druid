@@ -939,45 +939,73 @@ If a test has no clear state transitions:
 - **Druid-aware**: Node role selection is specific to Druid architecture
 - **CRITICAL**: Always carefully check for cluster objects in parent base classes
 
-## Dependencies
-
-Ensure the following dependencies are included in the test's module to use the Restart Testing Framework:
-
-```xml
-<dependencies>
-    <!-- Existing dependencies... -->
-
-    <!-- Restart Testing Framework - Core -->
-    <dependency>
-        <groupId>org.restarttest</groupId>
-        <artifactId>restart-core</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-        <scope>test</scope>
-    </dependency>
-
-    <!-- Restart Testing Framework - Druid Adapter -->
-    <dependency>
-        <groupId>org.restarttest</groupId>
-        <artifactId>restart-druid-adapter</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-        <scope>test</scope>
-    </dependency>
-</dependencies>
-```
 
 ## Build Requirements
 
 **IMPORTANT**: Druid tests require Java 11 to build and compile.
 
-Before building or running Druid tests with restart injection:
+### Step 1: Set Java Version
+
+Ensure you're using Java 11:
 
 ```bash
-# Ensure Java 11 is being used
+# Check current Java version
 java -version  # Should show Java 11
 
-# If using SDKMAN or similar:
-# sdk use java 11.x.x
+# If not Java 11, set JAVA_HOME (Linux/macOS)
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64  # Adjust path as needed
 
-# Then build the tests
-mvn clean test
+# Or if using SDKMAN:
+# sdk use java 11.x.x
 ```
+
+### Step 2: Build the Restart Testing Adapter
+
+The restart-adapter module must be built and installed to your local Maven repository **first**, before building any test modules:
+
+```bash
+# Navigate to the restart-adapter directory
+cd /path/to/druid/restart-adapter
+
+# Build and install the restart-adapter module
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+mvn clean install -DskipTests
+
+# Verify successful build
+# You should see "BUILD SUCCESS" and the JAR installed to ~/.m2/repository/org/apache/druid/druid-restart-adapter/1.0.0-SNAPSHOT/
+```
+
+This step installs:
+- `org.apache.druid:druid-restart-adapter:1.0.0-SNAPSHOT` to your local Maven repository
+
+### Step 3: Build and Run Tests with Restart Injection
+
+After the restart-adapter is installed, you can build and run tests in the test modules:
+
+```bash
+# Build the entire Druid project (from root directory)
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+cd /path/to/druid
+mvn clean install -DskipTests
+
+# Or build specific test modules only
+cd /path/to/druid
+
+# Build embedded-tests module
+mvn clean test -pl embedded-tests -DskipTests
+
+# Build kafka-indexing-service module
+mvn clean test -pl extensions-core/kafka-indexing-service -DskipTests
+
+# Build druid-catalog module
+mvn clean test -pl extensions-core/druid-catalog -DskipTests
+```
+
+
+### Important Notes
+
+1. **Build Order**: Always build `restart-adapter` first, then the test modules
+2. **Standalone Module**: The `restart-adapter` is NOT part of the Druid project's module hierarchy - it's a standalone module
+3. **Dependencies**: Both `restart-core` and `druid-restart-adapter` are added with `<scope>test</scope>`
+4. **Java Version**: Must use Java 11 for all Druid builds
+5. **Local Installation**: The restart-adapter must be installed to your local Maven repository (`~/.m2/repository`) before the test modules can compile
