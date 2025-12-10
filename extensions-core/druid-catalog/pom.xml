@@ -34,6 +34,11 @@
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
+    <properties>
+        <!-- Restart Testing Framework configuration -->
+        <restart.config>${project.basedir}/restarts-config/restart-config.json</restart.config>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.apache.druid</groupId>
@@ -263,6 +268,15 @@
 
   <build>
     <plugins>
+      <!-- Restart Testing Framework Plugin -->
+      <plugin>
+        <groupId>org.restarttest</groupId>
+        <artifactId>restart-maven-plugin</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <configuration>
+          <configFile>${restart.config}</configFile>
+        </configuration>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
