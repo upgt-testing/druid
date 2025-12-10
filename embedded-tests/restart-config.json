@@ -1,0 +1,5388 @@
+{
+  "tests": [
+    {
+      "testClass": "org.apache.druid.testing.embedded.auth.BasicAuthAuditTest_RestartInjected",
+      "testMethod": "test_createRole_createsSingleAuditEntry",
+      "restartPoints": [
+        {
+          "position": "after_role_created",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_audit_verified",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.auth.BasicAuthIndexingTest_RestartInjected",
+      "testMethod": "test_getScalingStats_redirectFromCoordinatorToOverlord",
+      "restartPoints": [
+        {
+          "position": "before_scaling_stats_request",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_scaling_stats_request",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.auth.BasicAuthMSQTest_RestartInjected",
+      "testMethod": "testIngestionWithoutPermissions",
+      "restartPoints": [
+        {
+          "position": "after_ingestion_permissions_denied",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.auth.BasicAuthMSQTest_RestartInjected",
+      "testMethod": "testIngestionWithPermissions",
+      "restartPoints": [
+        {
+          "position": "after_ingestion_permissions_granted",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_ingestion_task_submitted",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_ingestion_task_success",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.auth.BasicAuthMSQTest_RestartInjected",
+      "testMethod": "testExportWithoutPermissions",
+      "restartPoints": [
+        {
+          "position": "after_export_permissions_denied",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.auth.BasicAuthMSQTest_RestartInjected",
+      "testMethod": "testExportWithPermissions",
+      "restartPoints": [
+        {
+          "position": "after_export_permissions_granted",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_export_task_submitted",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_export_task_success",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.catalog.CatalogIngestAndQueryTest_RestartInjected",
+      "testMethod": "testInsertImplicitCast",
+      "restartPoints": [
+        {
+          "position": "after_table_create",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_task_submit",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_task_succeed",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_segments_available",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.catalog.CatalogIngestAndQueryTest_RestartInjected",
+      "testMethod": "testInsertWithClusteringFromCatalog",
+      "restartPoints": [
+        {
+          "position": "after_table_create",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_task_submit",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_task_succeed",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_segments_available",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.catalog.CatalogIngestAndQueryTest_RestartInjected",
+      "testMethod": "testInsertWithClusteringFromQuery",
+      "restartPoints": [
+        {
+          "position": "after_table_create",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_task_submit",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_task_succeed",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_segments_available",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.catalog.CatalogIngestAndQueryTest_RestartInjected",
+      "testMethod": "testInsertWithMultiClusteringFromCatalog",
+      "restartPoints": [
+        {
+          "position": "after_table_create",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_task_submit",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_task_succeed",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_segments_available",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.catalog.CatalogIngestAndQueryTest_RestartInjected",
+      "testMethod": "testInsertWithMultiClusteringFromQuery",
+      "restartPoints": [
+        {
+          "position": "after_table_create",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_task_submit",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_task_succeed",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_segments_available",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.catalog.CatalogIngestAndQueryTest_RestartInjected",
+      "testMethod": "testInsertNonDefinedColumnIntoSealedCatalogTableWithValidationDisabled",
+      "restartPoints": [
+        {
+          "position": "after_table_create",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_task_submit",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_task_succeed",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_segments_available",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.catalog.CatalogIngestAndQueryTest_RestartInjected",
+      "testMethod": "testInsertWithIncompatibleTypeAssignmentWithValidationDisabled",
+      "restartPoints": [
+        {
+          "position": "after_table_create",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_task_submit",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_task_succeed",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_segments_available",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.catalog.CatalogIngestErrorTest_RestartInjected",
+      "testMethod": "testInsertNoPartitonedByFromCatalogOrQuery",
+      "restartPoints": [
+        {
+          "position": "after_table_created_no_partition",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_partition_error_verified",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.catalog.CatalogIngestErrorTest_RestartInjected",
+      "testMethod": "testInsertNonDefinedColumnIntoSealedCatalogTable",
+      "restartPoints": [
+        {
+          "position": "after_sealed_table_created",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_undefined_column_error_verified",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.catalog.CatalogIngestErrorTest_RestartInjected",
+      "testMethod": "testInsertWithIncompatibleTypeAssignment",
+      "restartPoints": [
+        {
+          "position": "after_type_table_created",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_incompatible_type_error_verified",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.catalog.CatalogIngestErrorTest_RestartInjected",
+      "testMethod": "testInsertGroupByWithIncompatibleTypeAssignment",
+      "restartPoints": [
+        {
+          "position": "after_complex_type_table_created",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_complex_type_error_verified",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.catalog.CatalogRestTest_RestartInjected",
+      "testMethod": "testErrors",
+      "restartPoints": [
+        {
+          "position": "after_all_errors_verified",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.catalog.CatalogRestTest_RestartInjected",
+      "testMethod": "testLifecycle",
+      "restartPoints": [
+        {
+          "position": "after_table_created",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_table_updated",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_column_moved",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_column_dropped",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_columns_hidden",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_columns_unhidden",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_table_dropped",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.AutoCompactionTest_RestartInjected",
+      "testMethod": "testAutoCompactionRowWithMetricAndRowWithoutMetricShouldPreserveExistingMetricsUsingAggregatorWithDifferentReturnType",
+      "restartPoints": [
+        {
+          "position": "after_data_load_1",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_data_load_2",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_1",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_2",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.AutoCompactionTest_RestartInjected",
+      "testMethod": "testAutoCompactionRowWithMetricAndRowWithoutMetricShouldPreserveExistingMetrics",
+      "restartPoints": [
+        {
+          "position": "after_data_load_1",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_data_load_2",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_1",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_2",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.AutoCompactionTest_RestartInjected",
+      "testMethod": "testAutoCompactionOnlyRowsWithoutMetricShouldAddNewMetrics",
+      "restartPoints": [
+        {
+          "position": "after_data_load_1",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_data_load_2",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_1",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_2",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.AutoCompactionTest_RestartInjected",
+      "testMethod": "testAutoCompactionWithMetricColumnSameAsInputColShouldOverwriteInputWithMetrics",
+      "restartPoints": [
+        {
+          "position": "after_data_load_1",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_data_load_2",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_1",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_2",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.AutoCompactionTest_RestartInjected",
+      "testMethod": "testAutoCompactionOnlyRowsWithMetricShouldPreserveExistingMetrics",
+      "restartPoints": [
+        {
+          "position": "after_data_load_1",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_data_load_2",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_1",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_2",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.AutoCompactionTest_RestartInjected",
+      "testMethod": "testAutoCompactionPreservesCreateBitmapIndexInDimensionSchema",
+      "restartPoints": [
+        {
+          "position": "after_data_load",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.AutoCompactionTest_RestartInjected",
+      "testMethod": "testAutoCompactionRollsUpMultiValueDimensionsWithoutUnnest",
+      "restartPoints": [
+        {
+          "position": "after_data_load",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.AutoCompactionTest_RestartInjected",
+      "testMethod": "testAutoCompactionDutySubmitAndVerifyCompaction",
+      "restartPoints": [
+        {
+          "position": "after_data_load",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_1",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit_2",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_2",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.AutoCompactionTest_RestartInjected",
+      "testMethod": "testAutoCompactionDutyCanUpdateCompactionConfig",
+      "restartPoints": [
+        {
+          "position": "after_data_load",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit_1",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit_2",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_1",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit_3",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_2",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit_4",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_3",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.AutoCompactionTest_RestartInjected",
+      "testMethod": "testAutoCompactionDutyCanDeleteCompactionConfig",
+      "restartPoints": [
+        {
+          "position": "after_data_load",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.AutoCompactionTest_RestartInjected",
+      "testMethod": "testAutoCompactionDutyCanUpdateTaskSlots",
+      "restartPoints": [
+        {
+          "position": "after_data_load",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_1",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_2",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_3",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.AutoCompactionTest_RestartInjected",
+      "testMethod": "testAutoCompactionDutyWithSegmentGranularityAndWithDropExistingTrue",
+      "restartPoints": [
+        {
+          "position": "after_data_load",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit_1",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_1",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit_2",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_2",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit_3",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_3",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_4",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.AutoCompactionTest_RestartInjected",
+      "testMethod": "testAutoCompactionDutyWithSegmentGranularityAndWithDropExistingTrueThenFalse",
+      "restartPoints": [
+        {
+          "position": "after_data_load",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit_1",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_1",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit_2",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_2",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit_3",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_3",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_4",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.AutoCompactionTest_RestartInjected",
+      "testMethod": "testAutoCompactionDutyWithSegmentGranularityAndWithDropExistingFalse",
+      "restartPoints": [
+        {
+          "position": "after_data_load",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit_1",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_1",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit_2",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_2",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.AutoCompactionTest_RestartInjected",
+      "testMethod": "testAutoCompactionDutyWithSegmentGranularityAndMixedVersion",
+      "restartPoints": [
+        {
+          "position": "after_data_load",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit_1",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_1",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit_2",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_2",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.AutoCompactionTest_RestartInjected",
+      "testMethod": "testAutoCompactionDutyWithSegmentGranularityAndExistingCompactedSegmentsHaveSameSegmentGranularity",
+      "restartPoints": [
+        {
+          "position": "after_data_load",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit_1",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_1",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit_2",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_2",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.AutoCompactionTest_RestartInjected",
+      "testMethod": "testAutoCompactionDutyWithSegmentGranularityAndExistingCompactedSegmentsHaveDifferentSegmentGranularity",
+      "restartPoints": [
+        {
+          "position": "after_data_load",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit_1",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_1",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit_2",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_2",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.AutoCompactionTest_RestartInjected",
+      "testMethod": "testAutoCompactionDutyWithSegmentGranularityAndSmallerSegmentGranularityCoveringMultipleSegmentsInTimelineAndDropExistingTrue",
+      "restartPoints": [
+        {
+          "position": "after_data_load_1",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit_1",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_1",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_data_load_2",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit_2",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_2",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.AutoCompactionTest_RestartInjected",
+      "testMethod": "testAutoCompactionDutyWithSegmentGranularityAndSmallerSegmentGranularityCoveringMultipleSegmentsInTimelineAndDropExistingFalse",
+      "restartPoints": [
+        {
+          "position": "after_data_load_1",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit_1",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_1",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_data_load_2",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit_2",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_2",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.AutoCompactionTest_RestartInjected",
+      "testMethod": "testAutoCompactionDutyWithSegmentGranularityFinerAndNotAlignWithSegment",
+      "restartPoints": [
+        {
+          "position": "after_data_load",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.AutoCompactionTest_RestartInjected",
+      "testMethod": "testAutoCompactionDutyWithSegmentGranularityCoarserAndNotAlignWithSegment",
+      "restartPoints": [
+        {
+          "position": "after_data_load",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.AutoCompactionTest_RestartInjected",
+      "testMethod": "testAutoCompactionDutyWithRollup",
+      "restartPoints": [
+        {
+          "position": "after_data_load",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_1",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_2",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.AutoCompactionTest_RestartInjected",
+      "testMethod": "testAutoCompactionDutyWithQueryGranularity",
+      "restartPoints": [
+        {
+          "position": "after_data_load",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_1",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_2",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.AutoCompactionTest_RestartInjected",
+      "testMethod": "testAutoCompactionDutyWithDimensionsSpec",
+      "restartPoints": [
+        {
+          "position": "after_data_load",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_1",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_2",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.AutoCompactionTest_RestartInjected",
+      "testMethod": "testAutoCompactionDutyWithFilter",
+      "restartPoints": [
+        {
+          "position": "after_data_load",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_1",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_2",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.AutoCompactionTest_RestartInjected",
+      "testMethod": "testAutoCompationDutyWithMetricsSpec",
+      "restartPoints": [
+        {
+          "position": "after_data_load",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_1",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_2",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.AutoCompactionTest_RestartInjected",
+      "testMethod": "testAutoCompactionDutyWithOverlappingInterval",
+      "restartPoints": [
+        {
+          "position": "after_data_load_1",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_data_load_2",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_1",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_2",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_trigger_3",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.AutoCompactionUpgradeTest_RestartInjected",
+      "testMethod": "test_configCanBeUpdated_afterVersionUpgrades",
+      "restartPoints": [
+        {
+          "position": "after_overlord_start",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_config_submit",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.CompactionSparseColumnTest_RestartInjected",
+      "testMethod": "testCompactionPerfectRollUpWithoutDimensionSpec",
+      "restartPoints": [
+        {
+          "position": "after_initial_data_load",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_task",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_verification",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.CompactionSparseColumnTest_RestartInjected",
+      "testMethod": "testCompactionPerfectRollUpWithLexicographicDimensionSpec",
+      "restartPoints": [
+        {
+          "position": "after_initial_data_load",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_task",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_verification",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.CompactionSparseColumnTest_RestartInjected",
+      "testMethod": "testCompactionPerfectRollUpWithNonLexicographicDimensionSpec",
+      "restartPoints": [
+        {
+          "position": "after_initial_data_load",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_task",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_verification",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.CompactionTaskTest_RestartInjected",
+      "testMethod": "testCompaction",
+      "restartPoints": [
+        {
+          "position": "after_verification",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_data_load",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_verification_1",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_task",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_verification_2",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.CompactionTaskTest_RestartInjected",
+      "testMethod": "testParallelHashedCompaction",
+      "restartPoints": [
+        {
+          "position": "after_data_load",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_verification_1",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_task",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_verification_2",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.CompactionTaskTest_RestartInjected",
+      "testMethod": "testCompactionWithSegmentGranularityInGranularitySpec",
+      "restartPoints": [
+        {
+          "position": "after_verification",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_data_load",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_verification_1",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_task",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_verification_2",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.CompactionTaskTest_RestartInjected",
+      "testMethod": "testCompactionWithTimestampDimension",
+      "restartPoints": [
+        {
+          "position": "after_verification",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_data_load",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_verification_1",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_task",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_verification_2",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.CompactionTaskTest_RestartInjected",
+      "testMethod": "testCompactionWithSegmentGranularity",
+      "restartPoints": [
+        {
+          "position": "after_verification",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_data_load",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_verification_1",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_task",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_verification_2",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.CompactionTaskTest_RestartInjected",
+      "testMethod": "testCompactionWithSegmentGranularityAndQueryGranularityInGranularitySpec",
+      "restartPoints": [
+        {
+          "position": "after_data_load",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_verification_1",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_task",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_verification_2",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.compact.CompactionTaskTest_RestartInjected",
+      "testMethod": "testCompactionWithQueryGranularityInGranularitySpec",
+      "restartPoints": [
+        {
+          "position": "after_data_load",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_verification_1",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_task_1",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_verification_2",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_task_2",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_verification_3",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.docker.CustomNodeRoleDockerTest_RestartInjected",
+      "testMethod": "test_customNode_isDiscoveredByOtherServices",
+      "restartPoints": [
+        {
+          "position": "before_node_discovery_verification",
+          "targets": [
+            "router"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_node_discovery_verification",
+          "targets": [
+            "router"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.indexing.ConcurrentAppendReplaceTest_RestartInjected",
+      "testMethod": "test_concurrentAppend_toIntervalWithUnusedSegment_usesNewSegmentId",
+      "restartPoints": [
+        {
+          "position": "after_first_task_submit",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_mark_segments_unused",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_second_task_submit",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_segments_available",
+          "targets": [
+            "historical"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_query",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.indexing.IndexParallelTaskTest_RestartInjected",
+      "testMethod": "test_segmentAvailabilityIsConfirmed_whenTaskWaits5secondsForHandoff",
+      "restartPoints": [
+        {
+          "position": "after_task_submit",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_task_report",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.indexing.IndexParallelTaskTest_RestartInjected",
+      "testMethod": "test_runIndexTask_andReindexIntoAnotherDatasource",
+      "restartPoints": [
+        {
+          "position": "after_initial_task_submit",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_segment_available",
+          "targets": [
+            "historical"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_initial_query",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_reindex_segment_submit",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_reindex_segment_available",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_reindex_segment_query",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_reindex_file_submit",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_reindex_file_available",
+          "targets": [
+            "historical"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_reindex_file_query",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.indexing.IndexTaskTest_RestartInjected",
+      "testMethod": "test_run25Tasks_concurrently",
+      "restartPoints": [
+        {
+          "position": "after_concurrent_tasks_submit",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_concurrent_tasks_complete",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.indexing.IndexTaskTest_RestartInjected",
+      "testMethod": "test_run10Tasks_concurrently",
+      "restartPoints": [
+        {
+          "position": "after_concurrent_tasks_submit",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_concurrent_tasks_complete",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.indexing.IndexTaskTest_RestartInjected",
+      "testMethod": "test_run25Tasks_oneByOne",
+      "restartPoints": [
+        {
+          "position": "after_concurrent_tasks_submit",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_concurrent_tasks_complete",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.indexing.IndexTaskTest_RestartInjected",
+      "testMethod": "test_run100Tasks_concurrently",
+      "restartPoints": [
+        {
+          "position": "after_concurrent_tasks_submit",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_concurrent_tasks_complete",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.indexing.IndexTaskTest_RestartInjected",
+      "testMethod": "test_runIndexTask_forInlineDatasource",
+      "restartPoints": [
+        {
+          "position": "after_task_submit",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_segment_metadata_retrieval",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_segments_available",
+          "targets": [
+            "historical"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_query",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.indexing.IngestionSmokeTest_RestartInjected",
+      "testMethod": "test_runIndexTask_andKillData",
+      "restartPoints": [
+        {
+          "position": "after_task_submit",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_task_success",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_query_verification",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_mark_unused",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_kill_task_submit",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_kill_task_success",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.indexing.IngestionSmokeTest_RestartInjected",
+      "testMethod": "test_runIndexParallelTask_andCompactData",
+      "restartPoints": [
+        {
+          "position": "after_parallel_task_submit",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_parallel_task_success",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_submit",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_success",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.indexing.IngestionSmokeTest_RestartInjected",
+      "testMethod": "test_ingestWikipedia1DayWithMSQ_andQueryData",
+      "restartPoints": [
+        {
+          "position": "after_msq_task_submit",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_msq_task_success",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.indexing.IngestionSmokeTest_RestartInjected",
+      "testMethod": "test_runKafkaSupervisor",
+      "restartPoints": [
+        {
+          "position": "after_supervisor_post",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_kafka_segments_queryable",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.indexing.IngestionSmokeTest_RestartInjected",
+      "testMethod": "test_streamLogs_ofCancelledTask",
+      "restartPoints": [
+        {
+          "position": "after_noop_task_submit",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_task_cancel",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.indexing.KafkaClusterMetricsTest_RestartInjected",
+      "testMethod": "test_ingest10kRows_ofSelfClusterMetrics_andVerifyValues",
+      "restartPoints": [
+        {
+          "position": "after_supervisor_start",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_handoff",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_metrics_verification",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.indexing.KafkaClusterMetricsTest_RestartInjected",
+      "testMethod": "test_ingestClusterMetrics_withConcurrentCompactionSupervisor_andSkipKillOfUnusedSegments",
+      "restartPoints": [
+        {
+          "position": "after_kafka_supervisor_start",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_supervisor_start",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_kill_verification",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.indexing.KafkaClusterMetricsTest_RestartInjected",
+      "testMethod": "test_ingestClusterMetrics_compactionSkipsLockedIntervals",
+      "restartPoints": [
+        {
+          "position": "after_supervisor_start_test3",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_compaction_supervisor_start_test3",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_skip_compact_verification",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.indexing.KafkaDataFormatsTest_RestartInjected",
+      "testMethod": "test_indexKafka_avroDataFormat_withParser",
+      "restartPoints": [
+        {
+          "position": "after_supervisor_start",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_data_ingestion",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.indexing.KafkaDataFormatsTest_RestartInjected",
+      "testMethod": "test_indexKafka_avroDataFormat",
+      "restartPoints": [
+        {
+          "position": "after_supervisor_start",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_data_ingestion",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.indexing.KafkaDataFormatsTest_RestartInjected",
+      "testMethod": "test_indexKafka_avroDataFormatWithSchemaRegistry_withParser",
+      "restartPoints": [
+        {
+          "position": "after_supervisor_start",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_data_ingestion",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.indexing.KafkaDataFormatsTest_RestartInjected",
+      "testMethod": "test_indexKafka_avroDataFormatWithSchemaRegistry",
+      "restartPoints": [
+        {
+          "position": "after_supervisor_start",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_data_ingestion",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.indexing.KafkaDataFormatsTest_RestartInjected",
+      "testMethod": "test_indexKafka_csvDataFormat",
+      "restartPoints": [
+        {
+          "position": "after_supervisor_start",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_data_ingestion",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.indexing.KafkaDataFormatsTest_RestartInjected",
+      "testMethod": "test_indexKafka_csvDataFormat_withParser",
+      "restartPoints": [
+        {
+          "position": "after_supervisor_start",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_data_ingestion",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.indexing.KafkaDataFormatsTest_RestartInjected",
+      "testMethod": "test_indexKafka_jsonDataFormat_withParser",
+      "restartPoints": [
+        {
+          "position": "after_supervisor_start",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_data_ingestion",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.indexing.KafkaDataFormatsTest_RestartInjected",
+      "testMethod": "test_indexKafka_jsonDataFormat",
+      "restartPoints": [
+        {
+          "position": "after_supervisor_start",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_data_ingestion",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.indexing.KafkaDataFormatsTest_RestartInjected",
+      "testMethod": "test_indexKafka_protobufDataFormat_withParser",
+      "restartPoints": [
+        {
+          "position": "after_supervisor_start",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_data_ingestion",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.indexing.KafkaDataFormatsTest_RestartInjected",
+      "testMethod": "test_indexKafka_protobufDataFormat",
+      "restartPoints": [
+        {
+          "position": "after_supervisor_start",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_data_ingestion",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.indexing.KafkaDataFormatsTest_RestartInjected",
+      "testMethod": "test_indexKafka_protobufDataFormatWithSchemaRegistry_withParser",
+      "restartPoints": [
+        {
+          "position": "after_supervisor_start",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_data_ingestion",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.indexing.KafkaDataFormatsTest_RestartInjected",
+      "testMethod": "test_indexKafka_protobufDataFormatWithSchemaRegistry",
+      "restartPoints": [
+        {
+          "position": "after_supervisor_start",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_data_ingestion",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.indexing.KafkaDataFormatsTest_RestartInjected",
+      "testMethod": "test_indexKafka_tsvDataFormat_withParser",
+      "restartPoints": [
+        {
+          "position": "after_supervisor_start",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_data_ingestion",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.indexing.KafkaDataFormatsTest_RestartInjected",
+      "testMethod": "test_indexKafka_tsvDataFormat",
+      "restartPoints": [
+        {
+          "position": "after_supervisor_start",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_data_ingestion",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.lookup.JdbcLookupTest_RestartInjected",
+      "testMethod": "test_derbyJdbcLookup",
+      "restartPoints": [
+        {
+          "position": "after_lookup_table_populated",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_lookups_initialized",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_lookup_created",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_broker_started",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_lookup_query_verified",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.msq.EmbeddedDurableShuffleStorageTest_RestartInjected",
+      "testMethod": "test_selectFirstPage",
+      "restartPoints": [
+        {
+          "position": "before_select_first_page",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_select_first_page",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.msq.EmbeddedDurableShuffleStorageTest_RestartInjected",
+      "testMethod": "test_selectCount",
+      "restartPoints": [
+        {
+          "position": "before_select_count",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_select_count",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.msq.EmbeddedDurableShuffleStorageTest_RestartInjected",
+      "testMethod": "test_selectJoin_broadcast",
+      "restartPoints": [
+        {
+          "position": "before_join_broadcast",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_join_broadcast",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.msq.EmbeddedDurableShuffleStorageTest_RestartInjected",
+      "testMethod": "test_selectJoin_sortMerge",
+      "restartPoints": [
+        {
+          "position": "before_join_sortmerge",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_join_sortmerge",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.msq.EmbeddedDurableShuffleStorageTest_RestartInjected",
+      "testMethod": "test_selectJoin_sortMerge_durableDestination",
+      "restartPoints": [
+        {
+          "position": "before_durable_destination",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_durable_destination_query",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.msq.EmbeddedMSQRealtimeQueryTest_RestartInjected",
+      "testMethod": "test_selectCount_task_default",
+      "restartPoints": [
+        {
+          "position": "after_selectCount_task_default_run",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_selectCount_task_default_assertion",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.msq.EmbeddedMSQRealtimeQueryTest_RestartInjected",
+      "testMethod": "test_selectCount_task_withRealtime",
+      "restartPoints": [
+        {
+          "position": "after_selectCount_task_withRealtime_run",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_selectCount_task_withRealtime_assertion",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.msq.EmbeddedMSQRealtimeQueryTest_RestartInjected",
+      "testMethod": "test_selectCount_dart_default",
+      "restartPoints": [
+        {
+          "position": "after_selectCount_dart_default_run",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_selectCount_dart_default_assertion",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.msq.EmbeddedMSQRealtimeQueryTest_RestartInjected",
+      "testMethod": "test_selectCount_dart_noRealtime",
+      "restartPoints": [
+        {
+          "position": "after_selectCount_dart_noRealtime_run",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_selectCount_dart_noRealtime_assertion",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.msq.EmbeddedMSQRealtimeQueryTest_RestartInjected",
+      "testMethod": "test_selectBroadcastJoin_dart",
+      "restartPoints": [
+        {
+          "position": "after_selectBroadcastJoin_dart_assertion",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.msq.EmbeddedMSQRealtimeQueryTest_RestartInjected",
+      "testMethod": "test_selectBroadcastJoin_task_withRealtime",
+      "restartPoints": [
+        {
+          "position": "after_selectBroadcastJoin_task_submit",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_selectBroadcastJoin_task_assertion",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.msq.EmbeddedMSQRealtimeQueryTest_RestartInjected",
+      "testMethod": "test_selectSortMergeJoin_task_withRealtime",
+      "restartPoints": [
+        {
+          "position": "after_selectSortMergeJoin_task_run",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_selectSortMergeJoin_task_assertion",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.msq.EmbeddedMSQRealtimeQueryTest_RestartInjected",
+      "testMethod": "test_selectSortMergeJoin_dart",
+      "restartPoints": [
+        {
+          "position": "after_selectSortMergeJoin_dart_run",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_selectSortMergeJoin_dart_assertion",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.msq.EmbeddedMSQRealtimeQueryTest_RestartInjected",
+      "testMethod": "test_selectJoinwithLookup_task_withRealtime",
+      "restartPoints": [
+        {
+          "position": "after_selectJoinwithLookup_task_run",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_selectJoinwithLookup_task_assertion",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.msq.EmbeddedMSQRealtimeQueryTest_RestartInjected",
+      "testMethod": "test_selectJoinwithLookup_dart",
+      "restartPoints": [
+        {
+          "position": "after_selectJoinwithLookup_dart_run",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_selectJoinwithLookup_dart_assertion",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.msq.EmbeddedMSQRealtimeQueryTest_RestartInjected",
+      "testMethod": "test_selectJoinWithConcatVirtualDimension_task_withRealtime",
+      "restartPoints": [
+        {
+          "position": "after_selectJoinWithConcatVirtualDimension_task_run",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_selectJoinWithConcatVirtualDimension_task_assertion",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.msq.EmbeddedMSQRealtimeQueryTest_RestartInjected",
+      "testMethod": "test_selectJoinWithConcatVirtualDimension_dart",
+      "restartPoints": [
+        {
+          "position": "after_selectJoinWithConcatVirtualDimension_dart_run",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_selectJoinWithConcatVirtualDimension_dart_assertion",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.msq.EmbeddedMSQRealtimeQueryTest_RestartInjected",
+      "testMethod": "test_scanWithFilter_task_withRealtime",
+      "restartPoints": [
+        {
+          "position": "after_scanWithFilter_task_run",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_scanWithFilter_task_assertion",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.msq.EmbeddedMSQRealtimeQueryTest_RestartInjected",
+      "testMethod": "test_scanWithFilter_dart",
+      "restartPoints": [
+        {
+          "position": "after_scanWithFilter_dart_run",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_scanWithFilter_dart_assertion",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.msq.EmbeddedMSQRealtimeQueryTest_RestartInjected",
+      "testMethod": "test_groupByWithFilter_task_withRealtime",
+      "restartPoints": [
+        {
+          "position": "after_groupByWithFilter_task_run",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_groupByWithFilter_task_assertion",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.msq.EmbeddedMSQRealtimeQueryTest_RestartInjected",
+      "testMethod": "test_groupByWithFilter_dart",
+      "restartPoints": [
+        {
+          "position": "after_groupByWithFilter_dart_run",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_groupByWithFilter_dart_assertion",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.msq.EmbeddedMSQRealtimeQueryTest_RestartInjected",
+      "testMethod": "test_scanWithFilterAfterJoin_task_withRealtime",
+      "restartPoints": [
+        {
+          "position": "after_scanWithFilterAfterJoin_task_run",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_scanWithFilterAfterJoin_task_assertion",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.msq.EmbeddedMSQRealtimeQueryTest_RestartInjected",
+      "testMethod": "test_scanWithFilterAfterJoin_dart",
+      "restartPoints": [
+        {
+          "position": "after_scanWithFilterAfterJoin_dart_run",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_scanWithFilterAfterJoin_dart_assertion",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.msq.EmbeddedMSQRealtimeUnnestQueryTest_RestartInjected",
+      "testMethod": "test_unnest_task_withRealtime",
+      "restartPoints": [
+        {
+          "position": "after_unnest_realtime_task_run",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_unnest_realtime_assertion",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.msq.EmbeddedMSQRealtimeUnnestQueryTest_RestartInjected",
+      "testMethod": "test_unnest_dart",
+      "restartPoints": [
+        {
+          "position": "after_dart_sql_run",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_dart_assertion",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.msq.MSQKeyStatisticsSketchMergeModeTest_RestartInjected",
+      "testMethod": "testMsqIngestionParallelMerging",
+      "restartPoints": [
+        {
+          "position": "after_parallel_merge_task_submit",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_parallel_merge_task_complete",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_parallel_merge_query",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.msq.MSQKeyStatisticsSketchMergeModeTest_RestartInjected",
+      "testMethod": "testMsqIngestionSequentialMerging",
+      "restartPoints": [
+        {
+          "position": "after_sequential_merge_task_submit",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_sequential_merge_task_complete",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_sequential_merge_query",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.msq.MSQKeyStatisticsSketchMergeModeTest_RestartInjected",
+      "testMethod": "testMsqIngestionSequentialMergingWithEmptyStatistics",
+      "restartPoints": [
+        {
+          "position": "after_empty_stats_task_submit",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_empty_stats_task_complete",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_empty_stats_query",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.msq.MSQWorkerFaultToleranceTest_RestartInjected",
+      "testMethod": "test_cancelledWorker_isRetried_ifFaultToleranceIsEnabled",
+      "restartPoints": [
+        {
+          "position": "after_fault_tolerant_task_submit",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_faulty_indexer_start",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_functional_indexer_start",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_worker_task_failed",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_controller_task_success",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_query_verification",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.msq.MultiStageQueryTest_RestartInjected",
+      "testMethod": "testMsqIngestionAndQuerying",
+      "restartPoints": [
+        {
+          "position": "after_msq_task_submit",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_msq_task_complete",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_segment_available",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_query_verification",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.msq.MultiStageQueryTest_RestartInjected",
+      "testMethod": "testExport",
+      "restartPoints": [
+        {
+          "position": "after_export_task_submit",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_export_task_complete",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "before_export_query",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_export_verification",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.query.QueryVirtualStorageTest_RestartInjected",
+      "testMethod": "testQueryTooMuchData",
+      "restartPoints": [
+        {
+          "position": "before_query_too_much_data",
+          "targets": [
+            "historical"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_query_error_verified",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.query.QueryVirtualStorageTest_RestartInjected",
+      "testMethod": "testQueryPartials",
+      "restartPoints": [
+        {
+          "position": "after_query_interval_1",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_query_interval_3",
+          "targets": [
+            "historical"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_all_interval_queries",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_random_queries_loop",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.query.UnionQueryTest_RestartInjected",
+      "testMethod": "test_ingestData_andVerifyNativeAndSQLQueries",
+      "restartPoints": [
+        {
+          "position": "after_datasources_ingested",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_timeseries_query",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_search_query",
+          "targets": [
+            "historical"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_topn_query",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_bitmap64_queries",
+          "targets": [
+            "historical"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_union_all_sql_queries",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.server.CoordinatorClientTest_RestartInjected",
+      "testMethod": "test_findCurrentLeader",
+      "restartPoints": [
+        {
+          "position": "after_findCurrentLeader",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.server.CoordinatorClientTest_RestartInjected",
+      "testMethod": "test_isHandoffComplete",
+      "restartPoints": [
+        {
+          "position": "after_isHandoffComplete",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.server.CoordinatorClientTest_RestartInjected",
+      "testMethod": "test_fetchSegment",
+      "restartPoints": [
+        {
+          "position": "after_fetchSegment",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.server.CoordinatorClientTest_RestartInjected",
+      "testMethod": "test_fetchServerViewSegments",
+      "restartPoints": [
+        {
+          "position": "after_fetchServerViewSegments",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.server.CoordinatorClientTest_RestartInjected",
+      "testMethod": "test_fetchUsedSegments",
+      "restartPoints": [
+        {
+          "position": "after_fetchUsedSegments",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.server.CoordinatorClientTest_RestartInjected",
+      "testMethod": "test_fetchAllUsedSegmentsWithOvershadowedStatus",
+      "restartPoints": [
+        {
+          "position": "after_fetchAllUsedSegmentsWithOvershadowedStatus",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.server.CoordinatorClientTest_RestartInjected",
+      "testMethod": "test_loadRules",
+      "restartPoints": [
+        {
+          "position": "after_loadRules",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.server.CoordinatorPauseTest_RestartInjected",
+      "testMethod": "test_segmentsAreNotLoaded_ifCoordinatorIsPaused",
+      "restartPoints": [
+        {
+          "position": "after_coordinator_pause",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_ingestion_task",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_duty_status_check",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_unavailable_segments_verify",
+          "targets": [
+            "historical"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_coordinator_unpause",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_segments_available",
+          "targets": [
+            "historical"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.server.HighAvailabilityTest_RestartInjected",
+      "testMethod": "test_allNodesHaveDiscoveredEachOther",
+      "restartPoints": [
+        {
+          "position": "after_node_discovery",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_node_discovery_broker",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.server.HighAvailabilityTest_RestartInjected",
+      "testMethod": "test_switchLeader_andVerifyUsingSysTables",
+      "restartPoints": [
+        {
+          "position": "after_task_submit",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_segment_metadata_cache",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_sys_tasks_query",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_sys_segments_query",
+          "targets": [
+            "historical"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_sys_servers_query",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_overlord_leader_switch",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_coordinator_leader_switch",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.server.HistoricalCloningTest_RestartInjected",
+      "testMethod": "test_cloneHistoricals_inTurboMode_duringCoordinatorLeaderSwitch",
+      "restartPoints": [
+        {
+          "position": "after_rule_update",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_coordinator_config_update",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_ingestion",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_segment_load_success",
+          "targets": [
+            "historical"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_normal_load_complete",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_coordinator_runs",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_historical2_start",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_clone_assigned",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_turbo_load_complete",
+          "targets": [
+            "historical"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.server.HttpEmitterEventCollectorTest_RestartInjected",
+      "testMethod": "test_runIndexTask_andQueryData",
+      "restartPoints": [
+        {
+          "position": "after_task_submit",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_task_complete_metric",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_schema_cache_refresh",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_query_verification",
+          "targets": [
+            "historical"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.server.HttpRemoteTaskRunnerWorkerFailTest_RestartInjected",
+      "testMethod": "test_overlord_marksTaskAsFailed_ifIndexerCrashes",
+      "restartPoints": [
+        {
+          "position": "after_task_submit",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_task_started",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_task_discovered",
+          "targets": [
+            "coordinator"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_task_failed",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.server.OverlordClientTest_RestartInjected",
+      "testMethod": "test_findCurrentLeader",
+      "restartPoints": [
+        {
+          "position": "after_findCurrentLeader",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.server.OverlordClientTest_RestartInjected",
+      "testMethod": "test_runTask_ofTypeNoop",
+      "restartPoints": [
+        {
+          "position": "after_runTask_ofTypeNoop",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.server.OverlordClientTest_RestartInjected",
+      "testMethod": "test_runKillTask",
+      "restartPoints": [
+        {
+          "position": "after_runKillTask",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.server.OverlordClientTest_RestartInjected",
+      "testMethod": "test_taskStatuses_forCompleteTasks",
+      "restartPoints": [
+        {
+          "position": "after_taskStatuses_forCompleteTasks",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.server.OverlordClientTest_RestartInjected",
+      "testMethod": "test_supervisorStatuses",
+      "restartPoints": [
+        {
+          "position": "after_supervisorStatuses",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.server.OverlordClientTest_RestartInjected",
+      "testMethod": "test_getWorkers",
+      "restartPoints": [
+        {
+          "position": "after_getWorkers",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.server.OverlordClientTest_RestartInjected",
+      "testMethod": "test_getTotalWorkerCapacity",
+      "restartPoints": [
+        {
+          "position": "after_getTotalWorkerCapacity",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    {
+      "testClass": "org.apache.druid.testing.embedded.server.OverlordClientTest_RestartInjected",
+      "testMethod": "test_markSegmentsAsUnused_basic",
+      "restartPoints": [
+        {
+          "position": "after_markSegmentsAsUnused_basic",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    }
+  ]
+}

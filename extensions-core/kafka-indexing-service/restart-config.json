@@ -1,0 +1,90 @@
+{
+  "tests": [
+    {
+      "testClass": "org.apache.druid.indexing.kafka.simulate.EmbeddedKafkaSupervisorTest_RestartInjected",
+      "testMethod": "test_runKafkaSupervisor",
+      "restartPoints": [
+        {
+          "position": "after_kafka_records_produced",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_supervisor_submitted",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_broker_discovers_segments",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_supervisor_status_verified",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_task_status_verified",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_row_count_verified",
+          "targets": [
+            "broker"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_supervisor_suspended",
+          "targets": [
+            "overlord"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        },
+        {
+          "position": "after_segments_handed_off",
+          "targets": [
+            "indexer"
+          ],
+          "modes": [
+            "GRACEFUL"
+          ],
+          "index": 0
+        }
+      ]
+    }
+  ]
+}
