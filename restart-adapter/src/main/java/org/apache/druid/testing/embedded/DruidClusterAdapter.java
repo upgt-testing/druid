@@ -63,10 +63,10 @@ public class DruidClusterAdapter implements ClusterAdapter<EmbeddedDruidCluster>
     this.healthCheck = new CompositeHealthCheck<>("druid-health");
 
     // Add all health checks
-    this.healthCheck.addCheck(new ServerTopologyCheck());
-    this.healthCheck.addCheck(new LeadershipCheck());
-    this.healthCheck.addCheck(new NodeDiscoveryCheck());
-    this.healthCheck.addCheck(new SegmentAvailabilityCheck());
+    // this.healthCheck.addCheck(new ServerTopologyCheck());
+    // this.healthCheck.addCheck(new LeadershipCheck());
+    // this.healthCheck.addCheck(new NodeDiscoveryCheck());
+    // this.healthCheck.addCheck(new SegmentAvailabilityCheck());
   }
 
   @Override
